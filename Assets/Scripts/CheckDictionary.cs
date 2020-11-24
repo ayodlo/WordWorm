@@ -27,19 +27,19 @@ public class CheckDictionary : MonoBehaviour
 
     }
 
-    public Boolean checkWord(string word)
+    public int checkWord(string word)
     {
         // Find index of searchTerm and return negative value if not found
         index = Array.BinarySearch<string>(validWords, word, StringComparer.OrdinalIgnoreCase);
         if (index >= 0)
         {
             Debug.Log("FOUND " + word + " AT INDEX " + index);
-            return true;
+            return word.Length;
         }
         else
         {
             Debug.Log("DID NOT FIND " + word);
-            return false;
+            return 0;
         }
     }
 

@@ -8,7 +8,6 @@ public class LetterEvent : MonoBehaviour
     // References
     TextMesh textMesh;
     GameSession gameSession;
-
     private void Start()
     {
         textMesh = gameObject.GetComponent<TextMesh>();
@@ -18,5 +17,6 @@ public class LetterEvent : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         gameSession.addLetter(textMesh.text);
+        Destroy(gameObject);
     }
 }

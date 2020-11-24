@@ -7,6 +7,8 @@ public class GameSession : MonoBehaviour
 {
     // References
     public string word;
+    public int score = 0;
+    public int wordLength;
     CheckDictionary dictionary;
 
     private void Start()
@@ -17,7 +19,20 @@ public class GameSession : MonoBehaviour
     public void addLetter(string letter)
     {
         word += letter;
-        Debug.Log(word);
-        dictionary.checkWord(word);
+        wordLength = dictionary.checkWord(word);
+        if (wordLength > 0)
+        {
+            score += calculateScore(wordLength);
+        }
+        Debug.Log(score);
+    }
+
+    public int calculateScore(int length)
+    {
+        return (length * length * 10);
+    }
+    public int getScore()
+    {
+        return score;
     }
 }
